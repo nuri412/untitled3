@@ -21,7 +21,7 @@ public class MyQueue<E> {
         if (isEmpty()) {
             throw new IllegalStateException("Queue is empty");
         }
-        return list.remove(0);
+        return list.removeAt(0); // Используем removeAt для удаления элемента по индексу
     }
 
     public E peek() {

@@ -44,13 +44,14 @@ public class MyMinHeap<E extends Comparable<E>> {
             throw new IllegalStateException("Heap is empty");
         }
         E removedElement = heap.get(0);
-        E lastElement = heap.remove(heap.size() - 1);
+        E lastElement = heap.removeAt(heap.size() - 1); // Теперь removeAt возвращает элемент
         if (!isEmpty()) {
             heap.set(0, lastElement);
             heapifyDown(0);
         }
         return removedElement;
     }
+
 
     private void heapifyDown(int index) {
         int leftChild;

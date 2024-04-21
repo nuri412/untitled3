@@ -53,10 +53,21 @@ public class MyArrayList<E> implements MyList<E> {
         }
     }
 
-    private void removeAt(int index) {
+    // ... (остальной код остается без изменений)
+
+    public E removeAt(int index) {
+        if (index < 0 || index >= size) {
+            throw new IndexOutOfBoundsException("Index out of bounds");
+        }
+
+        E removedElement = (E) elements[index];
         System.arraycopy(elements, index + 1, elements, index, size - index - 1);
         size--;
+        return removedElement;
     }
+
+
+
 
     @Override
     public E get(int index) {

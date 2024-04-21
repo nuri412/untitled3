@@ -21,7 +21,7 @@ public class MyStack<E> {
         if (isEmpty()) {
             throw new IllegalStateException("Stack is empty");
         }
-        return list.remove(list.size() - 1);
+        return list.removeAt(list.size() - 1);
     }
 
     public E peek() {

@@ -100,6 +100,65 @@ public class MyLinkedList<E> implements MyList<E> {
         size--;
     }
 
+    public E removeAt(int index) {
+        if (index < 0 || index >= size) {
+            throw new IndexOutOfBoundsException("Index out of bounds");
+        }
+
+        MyNode<E> current = head;
+        if (index == 0) {
+            return removeFirst();
+        } else if (index == size - 1) {
+            return removeLast();
+        }
+
+        for (int i = 0; i < index; i++) {
+            current = current.next;
+        }
+
+        E removedElement = current.element;
+        current.prev.next = current.next;
+        current.next.prev = current.prev;
+        size--;
+
+        return removedElement;
+    }
+
+    private E removeFirst() {
+        if (isEmpty()) {
+            throw new IllegalStateException("List is empty");
+        }
+
+        E removedElement = head.element;
+        head = head.next;
+        if (head != null) {
+            head.prev = null;
+        } else {
+            tail = null;
+        }
+        size--;
+
+        return removedElement;
+    }
+
+    private E removeLast() {
+        if (isEmpty()) {
+            throw new IllegalStateException("List is empty");
+        }
+
+        E removedElement = tail.element;
+        tail = tail.prev;
+        if (tail != null) {
+            tail.next = null;
+        } else {
+            head = null;
+        }
+        size--;
+
+        return removedElement;
+    }
+
+
     @Override
     public E get(int index) {
         if (index < 0 || index >= size) {
