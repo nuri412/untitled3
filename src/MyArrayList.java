@@ -53,7 +53,7 @@ public class MyArrayList<E> implements MyList<E> {
         }
     }
 
-    // ... (остальной код остается без изменений)
+
 
     public E removeAt(int index) {
         if (index < 0 || index >= size) {
